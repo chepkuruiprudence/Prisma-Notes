@@ -4,18 +4,18 @@
 Prisma ORM is a modern, open-source tool that simplifies database management in web development. Acting as a bridge between your code and the database, Prisma provides a type-safe way to query, manipulate, and migrate data. It’s particularly powerful in the JavaScript and TypeScript ecosystems and supports popular databases like PostgreSQL, MySQL, SQLite, and MongoDB.
 
 ## Key Features
-1. **Type-Safety with TypeScript**
+1. **Type-Safety with TypeScript.**
 Prisma automatically generates TypeScript types based on your database schema, which reduces bugs and runtime errors by ensuring your queries are validated during compilation.
-2. **Easy Database Migrations**
+2. **Easy Database Migrations.**
 Managing database schema changes becomes simpler with Prisma’s migration system. You can create and apply migrations seamlessly based on changes in your Prisma schema file.
-3. **Auto-Generated Client**
+3. **Auto-Generated Client.**
 Prisma generates an intuitive client that abstracts complex SQL queries, allowing developers to focus on business logic rather than database syntax.
-4. **Multi-Database Support**
+4. **Multi-Database Support.**
 Prisma supports a wide range of databases, including PostgreSQL, MySQL, SQLite, and MongoDB. This flexibility makes it a versatile tool for developers working across different database environments.
-5. **Improved Developer Experience**
+5. **Improved Developer Experience.**
 Tools like Prisma Studio (a web interface for database management) and built-in relations handling make it easy to manage and visualize your data.
 
-##Keywords
+## Keywords
 -Data Models
 - Field types
 - Relations
@@ -33,7 +33,7 @@ Tools like Prisma Studio (a web interface for database management) and built-in 
 - **Attributes**: Additional properties that modify the field's behavior, such as `@id`, `@unique`, `@default`, etc.
 
 ## Field Modifiers
-indicate whether a field is required, using **[]** or optional using **?**, unique, or has a default value. Here are some common modifiers:
+Idicate whether a field is required, using **[]** or optional using **?**, unique, or has a default value. Here are some common modifiers:
 
 ## Field Attributes
 - **@id**: Marks the field as the primary key of the model.
