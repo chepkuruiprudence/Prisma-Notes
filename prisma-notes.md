@@ -77,9 +77,11 @@ npx prisma init --datasource-provider postgresql
 ```
 Prisma uses postgresql by default so you can skip the `--datasource-provider` flag if you are using PostgreSQL.
 
-```npx prisma init
+```
+   npx prisma init
 ```
 this command does two things:
+
 1. This will create a prisma directory and a schema.prisma file where you define your database schema.
 
 2. It will also create a `.env` file where you can set your database connection string.
@@ -127,7 +129,8 @@ Run the migration to apply the schema to your database:
 npx prisma migrate dev --name MIgrationName
 ```
 Anytime you make changes to your schema, you can create a new migration with a descriptive name. For example, if you add a new field to the User model, you would run:
-```npx prisma migrate dev --name add-new-field
+```
+npx prisma migrate dev --name add-new-field
 ```
 ### Generate Prisma client
 The Prisma Client is an auto-generated and type-safe database client that you use to interact with your database in a Node.js or TypeScript application. It’s generated based on the models you define in your Prisma schema (schema.prisma) and provides a simple, intuitive, and type-safe API for CRUD operations, filtering, pagination, and more.
@@ -140,12 +143,44 @@ npx prisma generate
 
 During migration, Prisma will automatically generate the Prisma Client based on your schema.
 If not installed, you can install it using:
-```npm install @prisma/client
+```
+npm install @prisma/client
+```
+
+### Querying the Database
+
+You can now query the database using the generated client:
+
+```javascript
+const {PrismaClient} = require('@prisma/client');
+const prisma = new PrismaClient();
+
+async function main() {
+  const newUser = await prisma.user.create({
+    data: {
+      email: 'chepkuruiprudence4032gmail.com',
+      name: 'Prudence Chepkurui',
+      posts: {
+        create: { title: 'Prudences world', content: 'Walk with me this journey!'
+         },
+      },
+    },
+  });
+  console.log('Created new user:', newUser);
+
+  main()
+  .catch((e) => {
+    console.error(e);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });
+}
+main();
 ```
 
 # CRUD Operations 
-## Create a record using create method
-
+## Create
 ```
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
@@ -159,8 +194,11 @@ const createUser = async () => {
   });
   console.log('createUser);
 }
+createUser();
+```
 
 ### Use createMany to create multiple records at once
+
 ```
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
@@ -175,8 +213,10 @@ const createMultipleUsers = async () => {
   console.log('createMultipleUsers');
 }
 createMultipleusers();
+```
 
-##Read
+## Read
+```
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
@@ -185,8 +225,10 @@ const readUsers = async () => {
   console.log('readUsers:', users);
 }
 readUsers();
+```
 
 ## Update
+```
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
@@ -198,8 +240,10 @@ const updateUser = async () => {
   console.log('updateUser:', updatedUser);
 }
 updateUser();
+```
 
 ## Delete
+```
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
@@ -210,6 +254,7 @@ const deleteUser = async () => {
   console.log('deleteUser:', deletedUser);
 }
 deleteUser();
+```
 
 #Relationships
 ## One-to-Many Relationship
@@ -266,46 +311,6 @@ model Profile {
   userId   Int    @unique
 }
 ```
-
-
-
-### Querying the Database
-
-You can now query the database using the generated client:
-
-```javascript
-const {PrismaClient} = require('@prisma/client');
-const prisma = new PrismaClient();
-
-async function main() {
-  const newUser = await prisma.user.create({
-    data: {
-      email: 'chepkuruiprudence4032gmail.com',
-      name: 'Prudence Chepkurui',
-      posts: {
-        create: { title: 'Prudences world', content: 'Walk with me this journey!'
-         },
-      },
-    },
-  });
-  console.log('Created new user:', newUser);
-
-  main()
-  .catch((e) => {
-    console.error(e);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
-}
-main();
-```
-### Using Prisma Studio
-Prisma Studio is a web-based GUI for managing your database. You can launch it with:
-```
-npx prisma studio
-```
-This opens a browser window where you can view and manipulate your data visually.
 
  # Benefits of Prisma ORM
 
